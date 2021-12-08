@@ -1,18 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { SafeAreaView, Switch, Text } from 'react-native';
 
 import { StyleSheet, useStyleSheet } from '../style';
 import { ThemeContext } from '../theme';
 
 export default function HomeScreen() {
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { setTheme } = useContext(ThemeContext);
+  const [darkMode, setDarkMode] = useState(false);
   const themedStyles = useStyleSheet(styles);
 
-  const isDarkMode = theme.name === 'dark';
-
-  const handleToggleTheme = () => {
-    setTheme(isDarkMode ? 'light' : 'dark');
-  };
+  useEffect(() => {
+    setTheme(darkMode ? 'dark' : 'light');
+  }, [darkMode]);
 
   return (
     <SafeAreaView style={themedStyles.container}>
@@ -20,8 +19,8 @@ export default function HomeScreen() {
         Open up App.js to start working on your app!
       </Text>
       <Switch
-        onValueChange={handleToggleTheme}
-        value={isDarkMode}
+        onValueChange={setDarkMode}
+        value={darkMode}
       />
     </SafeAreaView>
   );
