@@ -5,8 +5,8 @@ import { StyleSheet, useStyleSheet } from '../style';
 import { ThemeContext } from '../theme';
 
 export default function HomeScreen() {
-  const { setTheme } = useContext(ThemeContext);
-  const [darkMode, setDarkMode] = useState(false);
+  const { theme, setTheme } = useContext(ThemeContext);
+  const [darkMode, setDarkMode] = useState(theme.name === 'dark');
   const themedStyles = useStyleSheet(styles);
 
   useEffect(() => {
