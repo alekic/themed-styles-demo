@@ -1,7 +1,5 @@
-import ThemeContext, { ThemeProvider, useTheme } from './ThemeContext';
-
 export {
-  ThemeContext,
+  default as ThemeContext,
   ThemeProvider,
   useTheme
-};
+} from './ThemeContext';

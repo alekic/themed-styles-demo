@@ -1,6 +1,1 @@
-import StyleSheet, { useStyleSheet } from './StyleSheet';
-
-export {
-  StyleSheet,
-  useStyleSheet
-};
+export { default as StyleSheet, useStyleSheet } from './StyleSheet';
