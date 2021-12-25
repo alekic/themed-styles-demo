@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useTheme } from '../theme';
 
 export default class StyleSheet {
@@ -34,5 +35,9 @@ function applyTheme(style, theme) {
 
 export function useStyleSheet(styles) {
   const theme = useTheme();
-  return StyleSheet.applyTheme(styles, theme);
+
+  return useMemo(
+    () => StyleSheet.applyTheme(styles, theme),
+    [styles, theme]
+  );
 }
