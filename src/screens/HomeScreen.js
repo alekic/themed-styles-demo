@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { SafeAreaView, Switch, Text } from 'react-native';
 
 import { StyleSheet, useStyleSheet } from '../style';
-import { ThemeContext } from '../theme';
+import { ThemeContext, withTheme } from '../theme';
 
-export default function HomeScreen() {
-  const { theme, setTheme } = useContext(ThemeContext);
+function HomeScreen({ theme }) {
+  const { setTheme } = useContext(ThemeContext);
   const [darkMode, setDarkMode] = useState(theme.name === 'dark');
   const themedStyles = useStyleSheet(styles);
 
@@ -38,3 +38,5 @@ const styles = StyleSheet.create({
     padding: 20
   }
 });
+
+export default withTheme(HomeScreen);
