@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'background-primary',
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   text: {
     color: 'text-primary',

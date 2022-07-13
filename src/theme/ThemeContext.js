@@ -1,46 +1,9 @@
-import React, { useContext, useState } from 'react';
-import { dark, light } from './themes';
+import React from 'react';
 
-const themes = [
-  light,
-  dark
-];
-
-const ThemeContext = React.createContext({
+export default React.createContext({
   theme: {
     name: 'default',
     colors: {}
   },
-  setTheme: name => { }
+  setTheme: (name) => {}
 });
-
-export default ThemeContext;
-
-export function ThemeProvider({ children }) {
-  const [selectedTheme, setSelectedTheme] = useState(themes[0]);
-
-  const context = {
-    theme: selectedTheme,
-
-    setTheme: name => {
-      const theme = themes.find(theme => theme.name === name);
-
-      if (!theme) {
-        throw new Error(`Invalid theme: ${name}`);
-      }
-
-      setSelectedTheme(theme);
-    }
-  };
-
-  return (
-    <ThemeContext.Provider value={context}>
-      {children}
-    </ThemeContext.Provider>
-  );
-}
-
-export function useTheme() {
-  const { theme } = useContext(ThemeContext);
-  return theme;
-}
